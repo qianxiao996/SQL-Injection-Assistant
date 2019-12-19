@@ -1,0 +1,2097 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>879</width>
+    <height>627</height>
+   </rect>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>16777215</width>
+    <height>16777188</height>
+   </size>
+  </property>
+  <property name="windowTitle">
+   <string>SQL Injection Assistant  By qianxiao996  Blog: https://blog.qianxiao996.cn</string>
+  </property>
+  <property name="windowIcon">
+   <iconset>
+    <normaloff>../main.ico</normaloff>../main.ico</iconset>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">QPushButton
+{  
+    /* 前景色 */  
+    color:green;  
+ 
+    /* 背景色 */  
+    background-color:rgb(223,223,223);  
+ 
+    /* 边框风格 */  
+    border-style:outset;  
+ 
+    /* 边框宽度 */  
+    border-width:0.5px;  
+ 
+    /* 边框颜色 */  
+    border-color:rgb(10,45,110);  
+ 
+    /* 边框倒角 */  
+    border-radius:5px;  
+ 
+    /* 字体 */  
+    font:bold 16px;  
+  
+ 
+    /* 内边距 */  
+    padding:4px;  
+} 
+ 
+/* 鼠标按下时的效果 */ 
+QPushButton#pushButton:pressed 
+{  
+    /* 改变背景色 */  
+    background-color:rgb(40,85,20);  
+ 
+    /* 改变边框风格 */  
+    border-style:inset;  
+ 
+    /* 使文字有一点移动 */  
+    padding-left:6px;  
+    padding-top:6px;  
+}
+ 
+/* 按钮样式 */ 
+QPushButton:flat 
+{  
+    border:2px solid red;  
+} 
+ 
+/*鼠标悬浮时的效果*/
+QPushButton:hover
+{
+    color:#0000ff;
+    background-color:rgb(210, 205, 205); /*改变背景色*/
+    border-style:inset;/*改变边框风格*/
+    padding-left:8px;
+    padding-top:8px;
+}</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <property name="styleSheet">
+    <string notr="true"/>
+   </property>
+   <widget class="QTextEdit" name="Source_text">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>30</y>
+      <width>751</width>
+      <height>281</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QTextEdit {
+        border: 1px solid rgb(45, 45, 45);
+        background: rgb(255, 255, 255);
+    /* 边框颜色 */  
+    border-color:rgb(10,45,110);  
+ 
+    /* 边框倒角 */  
+    border-radius:5px;
+    font:20px;    
+}
+</string>
+    </property>
+   </widget>
+   <widget class="QComboBox" name="encode_type">
+    <property name="geometry">
+     <rect>
+      <x>122</x>
+      <y>315</y>
+      <width>111</width>
+      <height>26</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QComboBox {
+    /* 边框宽度,线条样式,颜色 */
+    border:1px solid black;
+
+    /* 倒角 */
+    border-radius:5px;
+
+    /* 内边框 */
+    padding:1px 10px 1px 3px;
+
+    min-width:10px;
+}
+QComboBox:editable {
+    background:green;
+}
+/* 当下拉框打开时, 移动显示框文本位置*/
+QComboBox:on {
+    padding-top: 3px;
+    padding-left: 4px;
+}
+/* 下拉按钮 */
+QComboBox::drop-down {
+
+	subcontrol-origin: padding;
+
+    /* 按钮位置,右上角 */
+    subcontrol-position: top right;
+   /* 一条边框线控制 */
+    border-left-width: 1px;
+    border-left-color: black;
+    border-left-style: solid;
+	width: 18px;
+}
+/* 下拉按钮位移 */
+QComboBox::down-arrow:on {
+    top: 1px;
+    left: 1px;
+}
+/* 下拉列表里的颜色 */
+QComboBox QAbstractItemView {
+    border: 2px solid darkgray;
+    selection-background-color: green;
+}
+
+
+</string>
+    </property>
+    <item>
+     <property name="text">
+      <string>URL-UTF8</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>URL-GB2312</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Unicode</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Escape(%U)</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>HtmlEncode</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>ASCII</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Base64</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Str&lt;-&gt;Hex</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>SQL-Char</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>SQL-Hex</string>
+     </property>
+    </item>
+   </widget>
+   <widget class="QTextEdit" name="Result_text">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>345</y>
+      <width>751</width>
+      <height>281</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QTextEdit {
+        border: 1px solid rgb(45, 45, 45);
+        background: rgb(255, 255, 255);
+    /* 边框颜色 */  
+    border-color:rgb(10,45,110);  
+ 
+    /* 边框倒角 */  
+    border-radius:5px;
+    font:20px;    
+}
+</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="source">
+    <property name="geometry">
+     <rect>
+      <x>6</x>
+      <y>9</y>
+      <width>72</width>
+      <height>15</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">    /* 前景色 */  
+    color:green;  
+   font:bold 20px;  </string>
+    </property>
+    <property name="text">
+     <string>Source：</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="result">
+    <property name="geometry">
+     <rect>
+      <x>7</x>
+      <y>317</y>
+      <width>72</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">    /* 前景色 */  
+    color:green;  
+   font:bold 20px;  </string>
+    </property>
+    <property name="text">
+     <string>Result</string>
+    </property>
+   </widget>
+   <widget class="QGroupBox" name="groupBox">
+    <property name="geometry">
+     <rect>
+      <x>758</x>
+      <y>3</y>
+      <width>114</width>
+      <height>183</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">    /* 前景色 */  
+    color:rgb(170, 0, 255)
+</string>
+    </property>
+    <property name="title">
+     <string>Public</string>
+    </property>
+    <widget class="QSplitter" name="splitter_3">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>20</y>
+       <width>93</width>
+       <height>154</height>
+      </rect>
+     </property>
+     <property name="orientation">
+      <enum>Qt::Vertical</enum>
+     </property>
+     <widget class="QPushButton" name="panduan">
+      <property name="styleSheet">
+       <string notr="true">QPushButton
+{  
+    /* 前景色 */  
+    color:green;  
+ 
+    /* 背景色 */  
+    background-color:rgb(223,223,223);  
+ 
+    /* 边框风格 */  
+    border-style:outset;  
+ 
+    /* 边框宽度 */  
+    border-width:0.5px;  
+ 
+    /* 边框颜色 */  
+    border-color:rgb(10,45,110);  
+ 
+    /* 边框倒角 */  
+    border-radius:5px;  
+ 
+    /* 字体 */  
+    font:bold 14px;  
+  
+ 
+    /* 内边距 */  
+    padding:4px;  
+} 
+ 
+/* 鼠标按下时的效果 */ 
+QPushButton#pushButton:pressed 
+{  
+    /* 改变背景色 */  
+    background-color:rgb(40,85,20);  
+ 
+    /* 改变边框风格 */  
+    border-style:inset;  
+ 
+    /* 使文字有一点移动 */  
+    padding-left:6px;  
+    padding-top:6px;  
+}
+ 
+/* 按钮样式 */ 
+QPushButton:flat 
+{  
+    border:2px solid red;  
+} 
+ 
+/*鼠标悬浮时的效果*/
+QPushButton:hover
+{
+    color:#0000ff;
+    background-color:rgb(210, 205, 205); /*改变背景色*/
+    border-style:inset;/*改变边框风格*/
+    padding-left:8px;
+    padding-top:8px;
+}</string>
+      </property>
+      <property name="text">
+       <string>判断注入</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="chaxunliehshu">
+      <property name="styleSheet">
+       <string notr="true">QPushButton
+{  
+    /* 前景色 */  
+    color:green;  
+ 
+    /* 背景色 */  
+    background-color:rgb(223,223,223);  
+ 
+    /* 边框风格 */  
+    border-style:outset;  
+ 
+    /* 边框宽度 */  
+    border-width:0.5px;  
+ 
+    /* 边框颜色 */  
+    border-color:rgb(10,45,110);  
+ 
+    /* 边框倒角 */  
+    border-radius:5px;  
+ 
+    /* 字体 */  
+    font:bold 14px;  
+  
+ 
+    /* 内边距 */  
+    padding:4px;  
+} 
+ 
+/* 鼠标按下时的效果 */ 
+QPushButton#pushButton:pressed 
+{  
+    /* 改变背景色 */  
+    background-color:rgb(40,85,20);  
+ 
+    /* 改变边框风格 */  
+    border-style:inset;  
+ 
+    /* 使文字有一点移动 */  
+    padding-left:6px;  
+    padding-top:6px;  
+}
+ 
+/* 按钮样式 */ 
+QPushButton:flat 
+{  
+    border:2px solid red;  
+} 
+ 
+/*鼠标悬浮时的效果*/
+QPushButton:hover
+{
+    color:#0000ff;
+    background-color:rgb(210, 205, 205); /*改变背景色*/
+    border-style:inset;/*改变边框风格*/
+    padding-left:8px;
+    padding-top:8px;
+}</string>
+      </property>
+      <property name="text">
+       <string>查询列数</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="user">
+      <property name="styleSheet">
+       <string notr="true">QPushButton
+{  
+    /* 前景色 */  
+    color:green;  
+ 
+    /* 背景色 */  
+    background-color:rgb(223,223,223);  
+ 
+    /* 边框风格 */  
+    border-style:outset;  
+ 
+    /* 边框宽度 */  
+    border-width:0.5px;  
+ 
+    /* 边框颜色 */  
+    border-color:rgb(10,45,110);  
+ 
+    /* 边框倒角 */  
+    border-radius:5px;  
+ 
+    /* 字体 */  
+    font:bold 14px;  
+  
+ 
+    /* 内边距 */  
+    padding:4px;  
+} 
+ 
+/* 鼠标按下时的效果 */ 
+QPushButton#pushButton:pressed 
+{  
+    /* 改变背景色 */  
+    background-color:rgb(40,85,20);  
+ 
+    /* 改变边框风格 */  
+    border-style:inset;  
+ 
+    /* 使文字有一点移动 */  
+    padding-left:6px;  
+    padding-top:6px;  
+}
+ 
+/* 按钮样式 */ 
+QPushButton:flat 
+{  
+    border:2px solid red;  
+} 
+ 
+/*鼠标悬浮时的效果*/
+QPushButton:hover
+{
+    color:#0000ff;
+    background-color:rgb(210, 205, 205); /*改变背景色*/
+    border-style:inset;/*改变边框风格*/
+    padding-left:8px;
+    padding-top:8px;
+}</string>
+      </property>
+      <property name="text">
+       <string>查询用户</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="version">
+      <property name="styleSheet">
+       <string notr="true">QPushButton
+{  
+    /* 前景色 */  
+    color:green;  
+ 
+    /* 背景色 */  
+    background-color:rgb(223,223,223);  
+ 
+    /* 边框风格 */  
+    border-style:outset;  
+ 
+    /* 边框宽度 */  
+    border-width:0.5px;  
+ 
+    /* 边框颜色 */  
+    border-color:rgb(10,45,110);  
+ 
+    /* 边框倒角 */  
+    border-radius:5px;  
+ 
+    /* 字体 */  
+    font:bold 14px;  
+  
+ 
+    /* 内边距 */  
+    padding:4px;  
+} 
+ 
+/* 鼠标按下时的效果 */ 
+QPushButton#pushButton:pressed 
+{  
+    /* 改变背景色 */  
+    background-color:rgb(40,85,20);  
+ 
+    /* 改变边框风格 */  
+    border-style:inset;  
+ 
+    /* 使文字有一点移动 */  
+    padding-left:6px;  
+    padding-top:6px;  
+}
+ 
+/* 按钮样式 */ 
+QPushButton:flat 
+{  
+    border:2px solid red;  
+} 
+ 
+/*鼠标悬浮时的效果*/
+QPushButton:hover
+{
+    color:#0000ff;
+    background-color:rgb(210, 205, 205); /*改变背景色*/
+    border-style:inset;/*改变边框风格*/
+    padding-left:8px;
+    padding-top:8px;
+}</string>
+      </property>
+      <property name="text">
+       <string>查询版本</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="path">
+      <property name="styleSheet">
+       <string notr="true">QPushButton
+{  
+    /* 前景色 */  
+    color:green;  
+ 
+    /* 背景色 */  
+    background-color:rgb(223,223,223);  
+ 
+    /* 边框风格 */  
+    border-style:outset;  
+ 
+    /* 边框宽度 */  
+    border-width:0.5px;  
+ 
+    /* 边框颜色 */  
+    border-color:rgb(10,45,110);  
+ 
+    /* 边框倒角 */  
+    border-radius:5px;  
+ 
+    /* 字体 */  
+    font:bold 14px;  
+  
+ 
+    /* 内边距 */  
+    padding:4px;  
+} 
+ 
+/* 鼠标按下时的效果 */ 
+QPushButton#pushButton:pressed 
+{  
+    /* 改变背景色 */  
+    background-color:rgb(40,85,20);  
+ 
+    /* 改变边框风格 */  
+    border-style:inset;  
+ 
+    /* 使文字有一点移动 */  
+    padding-left:6px;  
+    padding-top:6px;  
+}
+ 
+/* 按钮样式 */ 
+QPushButton:flat 
+{  
+    border:2px solid red;  
+} 
+ 
+/*鼠标悬浮时的效果*/
+QPushButton:hover
+{
+    color:#0000ff;
+    background-color:rgb(210, 205, 205); /*改变背景色*/
+    border-style:inset;/*改变边框风格*/
+    padding-left:8px;
+    padding-top:8px;
+}</string>
+      </property>
+      <property name="text">
+       <string>查询库路径</string>
+      </property>
+     </widget>
+    </widget>
+   </widget>
+   <widget class="QGroupBox" name="groupBox_3">
+    <property name="geometry">
+     <rect>
+      <x>758</x>
+      <y>185</y>
+      <width>114</width>
+      <height>245</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">    /* 前景色 */  
+    color:rgb(170, 0, 255)
+</string>
+    </property>
+    <property name="title">
+     <string>Order</string>
+    </property>
+    <widget class="QSplitter" name="splitter_4">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>20</y>
+       <width>93</width>
+       <height>218</height>
+      </rect>
+     </property>
+     <property name="orientation">
+      <enum>Qt::Vertical</enum>
+     </property>
+     <widget class="QPushButton" name="single_databases">
+      <property name="styleSheet">
+       <string notr="true">QPushButton
+{  
+    /* 前景色 */  
+    color:green;  
+ 
+    /* 背景色 */  
+    background-color:rgb(223,223,223);  
+ 
+    /* 边框风格 */  
+    border-style:outset;  
+ 
+    /* 边框宽度 */  
+    border-width:0.5px;  
+ 
+    /* 边框颜色 */  
+    border-color:rgb(10,45,110);  
+ 
+    /* 边框倒角 */  
+    border-radius:5px;  
+ 
+    /* 字体 */  
+    font:bold 14px;  
+  
+ 
+    /* 内边距 */  
+    padding:4px;  
+} 
+ 
+/* 鼠标按下时的效果 */ 
+QPushButton#pushButton:pressed 
+{  
+    /* 改变背景色 */  
+    background-color:rgb(40,85,20);  
+ 
+    /* 改变边框风格 */  
+    border-style:inset;  
+ 
+    /* 使文字有一点移动 */  
+    padding-left:6px;  
+    padding-top:6px;  
+}
+ 
+/* 按钮样式 */ 
+QPushButton:flat 
+{  
+    border:2px solid red;  
+} 
+ 
+/*鼠标悬浮时的效果*/
+QPushButton:hover
+{
+    color:#0000ff;
+    background-color:rgb(210, 205, 205); /*改变背景色*/
+    border-style:inset;/*改变边框风格*/
+    padding-left:8px;
+    padding-top:8px;
+}</string>
+      </property>
+      <property name="text">
+       <string>查询单库</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="current_databases">
+      <property name="styleSheet">
+       <string notr="true">QPushButton
+{  
+    /* 前景色 */  
+    color:green;  
+ 
+    /* 背景色 */  
+    background-color:rgb(223,223,223);  
+ 
+    /* 边框风格 */  
+    border-style:outset;  
+ 
+    /* 边框宽度 */  
+    border-width:0.5px;  
+ 
+    /* 边框颜色 */  
+    border-color:rgb(10,45,110);  
+ 
+    /* 边框倒角 */  
+    border-radius:5px;  
+ 
+    /* 字体 */  
+    font:bold 14px;  
+  
+ 
+    /* 内边距 */  
+    padding:4px;  
+} 
+ 
+/* 鼠标按下时的效果 */ 
+QPushButton#pushButton:pressed 
+{  
+    /* 改变背景色 */  
+    background-color:rgb(40,85,20);  
+ 
+    /* 改变边框风格 */  
+    border-style:inset;  
+ 
+    /* 使文字有一点移动 */  
+    padding-left:6px;  
+    padding-top:6px;  
+}
+ 
+/* 按钮样式 */ 
+QPushButton:flat 
+{  
+    border:2px solid red;  
+} 
+ 
+/*鼠标悬浮时的效果*/
+QPushButton:hover
+{
+    color:#0000ff;
+    background-color:rgb(210, 205, 205); /*改变背景色*/
+    border-style:inset;/*改变边框风格*/
+    padding-left:8px;
+    padding-top:8px;
+}</string>
+      </property>
+      <property name="text">
+       <string>查询当前库</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="all_databases">
+      <property name="styleSheet">
+       <string notr="true">QPushButton
+{  
+    /* 前景色 */  
+    color:green;  
+ 
+    /* 背景色 */  
+    background-color:rgb(223,223,223);  
+ 
+    /* 边框风格 */  
+    border-style:outset;  
+ 
+    /* 边框宽度 */  
+    border-width:0.5px;  
+ 
+    /* 边框颜色 */  
+    border-color:rgb(10,45,110);  
+ 
+    /* 边框倒角 */  
+    border-radius:5px;  
+ 
+    /* 字体 */  
+    font:bold 14px;  
+  
+ 
+    /* 内边距 */  
+    padding:4px;  
+} 
+ 
+/* 鼠标按下时的效果 */ 
+QPushButton#pushButton:pressed 
+{  
+    /* 改变背景色 */  
+    background-color:rgb(40,85,20);  
+ 
+    /* 改变边框风格 */  
+    border-style:inset;  
+ 
+    /* 使文字有一点移动 */  
+    padding-left:6px;  
+    padding-top:6px;  
+}
+ 
+/* 按钮样式 */ 
+QPushButton:flat 
+{  
+    border:2px solid red;  
+} 
+ 
+/*鼠标悬浮时的效果*/
+QPushButton:hover
+{
+    color:#0000ff;
+    background-color:rgb(210, 205, 205); /*改变背景色*/
+    border-style:inset;/*改变边框风格*/
+    padding-left:8px;
+    padding-top:8px;
+}</string>
+      </property>
+      <property name="text">
+       <string>查询所有库</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="single_tables">
+      <property name="styleSheet">
+       <string notr="true">QPushButton
+{  
+    /* 前景色 */  
+    color:green;  
+ 
+    /* 背景色 */  
+    background-color:rgb(223,223,223);  
+ 
+    /* 边框风格 */  
+    border-style:outset;  
+ 
+    /* 边框宽度 */  
+    border-width:0.5px;  
+ 
+    /* 边框颜色 */  
+    border-color:rgb(10,45,110);  
+ 
+    /* 边框倒角 */  
+    border-radius:5px;  
+ 
+    /* 字体 */  
+    font:bold 14px;  
+  
+ 
+    /* 内边距 */  
+    padding:4px;  
+} 
+ 
+/* 鼠标按下时的效果 */ 
+QPushButton#pushButton:pressed 
+{  
+    /* 改变背景色 */  
+    background-color:rgb(40,85,20);  
+ 
+    /* 改变边框风格 */  
+    border-style:inset;  
+ 
+    /* 使文字有一点移动 */  
+    padding-left:6px;  
+    padding-top:6px;  
+}
+ 
+/* 按钮样式 */ 
+QPushButton:flat 
+{  
+    border:2px solid red;  
+} 
+ 
+/*鼠标悬浮时的效果*/
+QPushButton:hover
+{
+    color:#0000ff;
+    background-color:rgb(210, 205, 205); /*改变背景色*/
+    border-style:inset;/*改变边框风格*/
+    padding-left:8px;
+    padding-top:8px;
+}</string>
+      </property>
+      <property name="text">
+       <string>查询单表</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="all_tables">
+      <property name="styleSheet">
+       <string notr="true">QPushButton
+{  
+    /* 前景色 */  
+    color:green;  
+ 
+    /* 背景色 */  
+    background-color:rgb(223,223,223);  
+ 
+    /* 边框风格 */  
+    border-style:outset;  
+ 
+    /* 边框宽度 */  
+    border-width:0.5px;  
+ 
+    /* 边框颜色 */  
+    border-color:rgb(10,45,110);  
+ 
+    /* 边框倒角 */  
+    border-radius:5px;  
+ 
+    /* 字体 */  
+    font:bold 14px;  
+  
+ 
+    /* 内边距 */  
+    padding:4px;  
+} 
+ 
+/* 鼠标按下时的效果 */ 
+QPushButton#pushButton:pressed 
+{  
+    /* 改变背景色 */  
+    background-color:rgb(40,85,20);  
+ 
+    /* 改变边框风格 */  
+    border-style:inset;  
+ 
+    /* 使文字有一点移动 */  
+    padding-left:6px;  
+    padding-top:6px;  
+}
+ 
+/* 按钮样式 */ 
+QPushButton:flat 
+{  
+    border:2px solid red;  
+} 
+ 
+/*鼠标悬浮时的效果*/
+QPushButton:hover
+{
+    color:#0000ff;
+    background-color:rgb(210, 205, 205); /*改变背景色*/
+    border-style:inset;/*改变边框风格*/
+    padding-left:8px;
+    padding-top:8px;
+}</string>
+      </property>
+      <property name="text">
+       <string>查询所有表</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="single_columns">
+      <property name="styleSheet">
+       <string notr="true">QPushButton
+{  
+    /* 前景色 */  
+    color:green;  
+ 
+    /* 背景色 */  
+    background-color:rgb(223,223,223);  
+ 
+    /* 边框风格 */  
+    border-style:outset;  
+ 
+    /* 边框宽度 */  
+    border-width:0.5px;  
+ 
+    /* 边框颜色 */  
+    border-color:rgb(10,45,110);  
+ 
+    /* 边框倒角 */  
+    border-radius:5px;  
+ 
+    /* 字体 */  
+    font:bold 14px;  
+  
+ 
+    /* 内边距 */  
+    padding:4px;  
+} 
+ 
+/* 鼠标按下时的效果 */ 
+QPushButton#pushButton:pressed 
+{  
+    /* 改变背景色 */  
+    background-color:rgb(40,85,20);  
+ 
+    /* 改变边框风格 */  
+    border-style:inset;  
+ 
+    /* 使文字有一点移动 */  
+    padding-left:6px;  
+    padding-top:6px;  
+}
+ 
+/* 按钮样式 */ 
+QPushButton:flat 
+{  
+    border:2px solid red;  
+} 
+ 
+/*鼠标悬浮时的效果*/
+QPushButton:hover
+{
+    color:#0000ff;
+    background-color:rgb(210, 205, 205); /*改变背景色*/
+    border-style:inset;/*改变边框风格*/
+    padding-left:8px;
+    padding-top:8px;
+}</string>
+      </property>
+      <property name="text">
+       <string>查询单列</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="all_columns">
+      <property name="styleSheet">
+       <string notr="true">QPushButton
+{  
+    /* 前景色 */  
+    color:green;  
+ 
+    /* 背景色 */  
+    background-color:rgb(223,223,223);  
+ 
+    /* 边框风格 */  
+    border-style:outset;  
+ 
+    /* 边框宽度 */  
+    border-width:0.5px;  
+ 
+    /* 边框颜色 */  
+    border-color:rgb(10,45,110);  
+ 
+    /* 边框倒角 */  
+    border-radius:5px;  
+ 
+    /* 字体 */  
+    font:bold 14px;  
+  
+ 
+    /* 内边距 */  
+    padding:4px;  
+} 
+ 
+/* 鼠标按下时的效果 */ 
+QPushButton#pushButton:pressed 
+{  
+    /* 改变背景色 */  
+    background-color:rgb(40,85,20);  
+ 
+    /* 改变边框风格 */  
+    border-style:inset;  
+ 
+    /* 使文字有一点移动 */  
+    padding-left:6px;  
+    padding-top:6px;  
+}
+ 
+/* 按钮样式 */ 
+QPushButton:flat 
+{  
+    border:2px solid red;  
+} 
+ 
+/*鼠标悬浮时的效果*/
+QPushButton:hover
+{
+    color:#0000ff;
+    background-color:rgb(210, 205, 205); /*改变背景色*/
+    border-style:inset;/*改变边框风格*/
+    padding-left:8px;
+    padding-top:8px;
+}</string>
+      </property>
+      <property name="text">
+       <string>查询所有列</string>
+      </property>
+     </widget>
+    </widget>
+   </widget>
+   <widget class="QGroupBox" name="groupBox_9">
+    <property name="geometry">
+     <rect>
+      <x>758</x>
+      <y>545</y>
+      <width>114</width>
+      <height>81</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">    /* 前景色 */  
+    color:rgb(170, 0, 255)
+</string>
+    </property>
+    <property name="title">
+     <string>Other</string>
+    </property>
+    <widget class="QSplitter" name="splitter_2">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>20</y>
+       <width>93</width>
+       <height>58</height>
+      </rect>
+     </property>
+     <property name="orientation">
+      <enum>Qt::Vertical</enum>
+     </property>
+     <widget class="QPushButton" name="data">
+      <property name="styleSheet">
+       <string notr="true">QPushButton
+{  
+    /* 前景色 */  
+    color:green;  
+ 
+    /* 背景色 */  
+    background-color:rgb(223,223,223);  
+ 
+    /* 边框风格 */  
+    border-style:outset;  
+ 
+    /* 边框宽度 */  
+    border-width:0.5px;  
+ 
+    /* 边框颜色 */  
+    border-color:rgb(10,45,110);  
+ 
+    /* 边框倒角 */  
+    border-radius:5px;  
+ 
+    /* 字体 */  
+    font:bold 14px;  
+  
+ 
+    /* 内边距 */  
+    padding:4px;  
+} 
+ 
+/* 鼠标按下时的效果 */ 
+QPushButton#pushButton:pressed 
+{  
+    /* 改变背景色 */  
+    background-color:rgb(40,85,20);  
+ 
+    /* 改变边框风格 */  
+    border-style:inset;  
+ 
+    /* 使文字有一点移动 */  
+    padding-left:6px;  
+    padding-top:6px;  
+}
+ 
+/* 按钮样式 */ 
+QPushButton:flat 
+{  
+    border:2px solid red;  
+} 
+ 
+/*鼠标悬浮时的效果*/
+QPushButton:hover
+{
+    color:#0000ff;
+    background-color:rgb(210, 205, 205); /*改变背景色*/
+    border-style:inset;/*改变边框风格*/
+    padding-left:8px;
+    padding-top:8px;
+}</string>
+      </property>
+      <property name="text">
+       <string>查询数据</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="others">
+      <property name="styleSheet">
+       <string notr="true">QPushButton
+{  
+    /* 前景色 */  
+    color:green;  
+ 
+    /* 背景色 */  
+    background-color:rgb(223,223,223);  
+ 
+    /* 边框风格 */  
+    border-style:outset;  
+ 
+    /* 边框宽度 */  
+    border-width:0.5px;  
+ 
+    /* 边框颜色 */  
+    border-color:rgb(10,45,110);  
+ 
+    /* 边框倒角 */  
+    border-radius:5px;  
+ 
+    /* 字体 */  
+    font:bold 14px;  
+  
+ 
+    /* 内边距 */  
+    padding:4px;  
+} 
+ 
+/* 鼠标按下时的效果 */ 
+QPushButton#pushButton:pressed 
+{  
+    /* 改变背景色 */  
+    background-color:rgb(40,85,20);  
+ 
+    /* 改变边框风格 */  
+    border-style:inset;  
+ 
+    /* 使文字有一点移动 */  
+    padding-left:6px;  
+    padding-top:6px;  
+}
+ 
+/* 按钮样式 */ 
+QPushButton:flat 
+{  
+    border:2px solid red;  
+} 
+ 
+/*鼠标悬浮时的效果*/
+QPushButton:hover
+{
+    color:#0000ff;
+    background-color:rgb(210, 205, 205); /*改变背景色*/
+    border-style:inset;/*改变边框风格*/
+    padding-left:8px;
+    padding-top:8px;
+}</string>
+      </property>
+      <property name="text">
+       <string>Others</string>
+      </property>
+     </widget>
+    </widget>
+   </widget>
+   <widget class="QComboBox" name="sql_type">
+    <property name="geometry">
+     <rect>
+      <x>660</x>
+      <y>4</y>
+      <width>91</width>
+      <height>24</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QComboBox {
+    /* 边框宽度,线条样式,颜色 */
+    border:1px solid black;
+
+    /* 倒角 */
+    border-radius:5px;
+
+    /* 内边框 */
+    padding:1px 10px 1px 3px;
+
+    min-width:10px;
+}
+QComboBox:editable {
+    background:green;
+}
+/* 当下拉框打开时, 移动显示框文本位置*/
+QComboBox:on {
+    padding-top: 3px;
+    padding-left: 4px;
+}
+/* 下拉按钮 */
+QComboBox::drop-down {
+
+	subcontrol-origin: padding;
+
+    /* 按钮位置,右上角 */
+    subcontrol-position: top right;
+   /* 一条边框线控制 */
+    border-left-width: 1px;
+    border-left-color: black;
+    border-left-style: solid;
+	width: 18px;
+}
+/* 下拉按钮位移 */
+QComboBox::down-arrow:on {
+    top: 1px;
+    left: 1px;
+}
+/* 下拉列表里的颜色 */
+QComboBox QAbstractItemView {
+    border: 2px solid darkgray;
+    selection-background-color: green;
+}
+
+
+</string>
+    </property>
+    <item>
+     <property name="text">
+      <string>MYSQL</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>MSSQL</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>ORACLE</string>
+     </property>
+    </item>
+   </widget>
+   <widget class="QLabel" name="time">
+    <property name="geometry">
+     <rect>
+      <x>100</x>
+      <y>6</y>
+      <width>151</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">    /* 前景色 */  
+    color:green;  </string>
+    </property>
+    <property name="text">
+     <string>Time</string>
+    </property>
+   </widget>
+   <widget class="QSplitter" name="splitter">
+    <property name="geometry">
+     <rect>
+      <x>241</x>
+      <y>314</y>
+      <width>511</width>
+      <height>28</height>
+     </rect>
+    </property>
+    <property name="orientation">
+     <enum>Qt::Horizontal</enum>
+    </property>
+    <widget class="QPushButton" name="encode_Button">
+     <property name="styleSheet">
+      <string notr="true">QPushButton
+{  
+    /* 前景色 */  
+    color:green;  
+ 
+    /* 背景色 */  
+    background-color:rgb(223,223,223);  
+ 
+    /* 边框风格 */  
+    border-style:outset;  
+ 
+    /* 边框宽度 */  
+    border-width:0.5px;  
+ 
+    /* 边框颜色 */  
+    border-color:rgb(10,45,110);  
+ 
+    /* 边框倒角 */  
+    border-radius:5px;  
+ 
+    /* 字体 */  
+    font:bold 16px;  
+  
+ 
+    /* 内边距 */  
+    padding:4px;  
+} 
+ 
+/* 鼠标按下时的效果 */ 
+QPushButton#pushButton:pressed 
+{  
+    /* 改变背景色 */  
+    background-color:rgb(40,85,20);  
+ 
+    /* 改变边框风格 */  
+    border-style:inset;  
+ 
+    /* 使文字有一点移动 */  
+    padding-left:6px;  
+    padding-top:6px;  
+}
+ 
+/* 按钮样式 */ 
+QPushButton:flat 
+{  
+    border:2px solid red;  
+} 
+ 
+/*鼠标悬浮时的效果*/
+QPushButton:hover
+{
+    color:#0000ff;
+    background-color:rgb(210, 205, 205); /*改变背景色*/
+    border-style:inset;/*改变边框风格*/
+    padding-left:8px;
+    padding-top:8px;
+}</string>
+     </property>
+     <property name="text">
+      <string>Encode</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="decode_Button">
+     <property name="styleSheet">
+      <string notr="true">QPushButton
+{  
+    /* 前景色 */  
+    color:green;  
+ 
+    /* 背景色 */  
+    background-color:rgb(223,223,223);  
+ 
+    /* 边框风格 */  
+    border-style:outset;  
+ 
+    /* 边框宽度 */  
+    border-width:0.5px;  
+ 
+    /* 边框颜色 */  
+    border-color:rgb(10,45,110);  
+ 
+    /* 边框倒角 */  
+    border-radius:5px;  
+ 
+    /* 字体 */  
+    font:bold 16px;  
+  
+ 
+    /* 内边距 */  
+    padding:4px;  
+} 
+ 
+/* 鼠标按下时的效果 */ 
+QPushButton#pushButton:pressed 
+{  
+    /* 改变背景色 */  
+    background-color:rgb(40,85,20);  
+ 
+    /* 改变边框风格 */  
+    border-style:inset;  
+ 
+    /* 使文字有一点移动 */  
+    padding-left:6px;  
+    padding-top:6px;  
+}
+ 
+/* 按钮样式 */ 
+QPushButton:flat 
+{  
+    border:2px solid red;  
+} 
+ 
+/*鼠标悬浮时的效果*/
+QPushButton:hover
+{
+    color:#0000ff;
+    background-color:rgb(210, 205, 205); /*改变背景色*/
+    border-style:inset;/*改变边框风格*/
+    padding-left:8px;
+    padding-top:8px;
+}</string>
+     </property>
+     <property name="text">
+      <string>Decode</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="clear_Button">
+     <property name="styleSheet">
+      <string notr="true">QPushButton
+{  
+    /* 前景色 */  
+    color:green;  
+ 
+    /* 背景色 */  
+    background-color:rgb(223,223,223);  
+ 
+    /* 边框风格 */  
+    border-style:outset;  
+ 
+    /* 边框宽度 */  
+    border-width:0.5px;  
+ 
+    /* 边框颜色 */  
+    border-color:rgb(10,45,110);  
+ 
+    /* 边框倒角 */  
+    border-radius:5px;  
+ 
+    /* 字体 */  
+    font:bold 14px;  
+  
+ 
+    /* 内边距 */  
+    padding:4px;  
+} 
+ 
+/* 鼠标按下时的效果 */ 
+QPushButton#pushButton:pressed 
+{  
+    /* 改变背景色 */  
+    background-color:rgb(40,85,20);  
+ 
+    /* 改变边框风格 */  
+    border-style:inset;  
+ 
+    /* 使文字有一点移动 */  
+    padding-left:6px;  
+    padding-top:6px;  
+}
+ 
+/* 按钮样式 */ 
+QPushButton:flat 
+{  
+    border:2px solid red;  
+} 
+ 
+/*鼠标悬浮时的效果*/
+QPushButton:hover
+{
+    color:#0000ff;
+    background-color:rgb(210, 205, 205); /*改变背景色*/
+    border-style:inset;/*改变边框风格*/
+    padding-left:8px;
+    padding-top:8px;
+}</string>
+     </property>
+     <property name="text">
+      <string>Clear</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="Copy_Source_Button">
+     <property name="styleSheet">
+      <string notr="true">QPushButton
+{  
+    /* 前景色 */  
+    color:green;  
+ 
+    /* 背景色 */  
+    background-color:rgb(223,223,223);  
+ 
+    /* 边框风格 */  
+    border-style:outset;  
+ 
+    /* 边框宽度 */  
+    border-width:0.5px;  
+ 
+    /* 边框颜色 */  
+    border-color:rgb(10,45,110);  
+ 
+    /* 边框倒角 */  
+    border-radius:5px;  
+ 
+    /* 字体 */  
+    font:bold 14px;  
+  
+ 
+    /* 内边距 */  
+    padding:4px;  
+} 
+ 
+/* 鼠标按下时的效果 */ 
+QPushButton#pushButton:pressed 
+{  
+    /* 改变背景色 */  
+    background-color:rgb(40,85,20);  
+ 
+    /* 改变边框风格 */  
+    border-style:inset;  
+ 
+    /* 使文字有一点移动 */  
+    padding-left:6px;  
+    padding-top:6px;  
+}
+ 
+/* 按钮样式 */ 
+QPushButton:flat 
+{  
+    border:2px solid red;  
+} 
+ 
+/*鼠标悬浮时的效果*/
+QPushButton:hover
+{
+    color:#0000ff;
+    background-color:rgb(210, 205, 205); /*改变背景色*/
+    border-style:inset;/*改变边框风格*/
+    padding-left:8px;
+    padding-top:8px;
+}</string>
+     </property>
+     <property name="text">
+      <string>Copy_Source</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="Copy_ResultButton">
+     <property name="styleSheet">
+      <string notr="true">QPushButton
+{  
+    /* 前景色 */  
+    color:green;  
+ 
+    /* 背景色 */  
+    background-color:rgb(223,223,223);  
+ 
+    /* 边框风格 */  
+    border-style:outset;  
+ 
+    /* 边框宽度 */  
+    border-width:0.5px;  
+ 
+    /* 边框颜色 */  
+    border-color:rgb(10,45,110);  
+ 
+    /* 边框倒角 */  
+    border-radius:5px;  
+ 
+    /* 字体 */  
+    font:bold 14px;  
+  
+ 
+    /* 内边距 */  
+    padding:4px;  
+} 
+ 
+/* 鼠标按下时的效果 */ 
+QPushButton#pushButton:pressed 
+{  
+    /* 改变背景色 */  
+    background-color:rgb(40,85,20);  
+ 
+    /* 改变边框风格 */  
+    border-style:inset;  
+ 
+    /* 使文字有一点移动 */  
+    padding-left:6px;  
+    padding-top:6px;  
+}
+ 
+/* 按钮样式 */ 
+QPushButton:flat 
+{  
+    border:2px solid red;  
+} 
+ 
+/*鼠标悬浮时的效果*/
+QPushButton:hover
+{
+    color:#0000ff;
+    background-color:rgb(210, 205, 205); /*改变背景色*/
+    border-style:inset;/*改变边框风格*/
+    padding-left:8px;
+    padding-top:8px;
+}</string>
+     </property>
+     <property name="text">
+      <string>Copy_Result</string>
+     </property>
+    </widget>
+   </widget>
+   <widget class="QLineEdit" name="tihuan_source">
+    <property name="geometry">
+     <rect>
+      <x>290</x>
+      <y>2</y>
+      <width>113</width>
+      <height>27</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QLineEdit {
+        border-radius: 4px;
+        height: 25px;
+        border: 1px solid rgb(100, 100, 100);
+        background: rgb(255, 255, 255)
+}
+QLineEdit:enabled {
+        color: rgb(175, 175, 175);
+}
+QLineEdit:enabled:hover, QLineEdit:enabled:focus {
+        color: rgb(255, 85, 255)
+}
+QLineEdit:!enabled {
+        color: rgb(155, 155, 155);
+}</string>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="tihuan_result">
+    <property name="geometry">
+     <rect>
+      <x>461</x>
+      <y>2</y>
+      <width>113</width>
+      <height>27</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QLineEdit {
+        border-radius: 4px;
+        height: 25px;
+        border: 1px solid rgb(100, 100, 100);
+        background: rgb(255, 255, 255)
+}
+QLineEdit:enabled {
+        color: rgb(175, 175, 175);
+}
+QLineEdit:enabled:hover, QLineEdit:enabled:focus {
+        color:rgb(255, 85, 255)
+}
+QLineEdit:!enabled {
+        color: rgb(155, 155, 155);
+}</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label2">
+    <property name="geometry">
+     <rect>
+      <x>407</x>
+      <y>4</y>
+      <width>51</width>
+      <height>24</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">    /* 前景色 */  
+    color:green;  
+   font: 17px;  </string>
+    </property>
+    <property name="text">
+     <string>替换为</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="tihuan">
+    <property name="geometry">
+     <rect>
+      <x>581</x>
+      <y>3</y>
+      <width>71</width>
+      <height>27</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton
+{  
+    /* 前景色 */  
+    color:green;  
+ 
+    /* 背景色 */  
+    background-color:rgb(223,223,223);  
+ 
+    /* 边框风格 */  
+    border-style:outset;  
+ 
+    /* 边框宽度 */  
+    border-width:0.5px;  
+ 
+    /* 边框颜色 */  
+    border-color:rgb(10,45,110);  
+ 
+    /* 边框倒角 */  
+    border-radius:5px;  
+ 
+    /* 字体 */  
+    font:bold 14px;  
+  
+ 
+    /* 内边距 */  
+    padding:4px;  
+} 
+ 
+/* 鼠标按下时的效果 */ 
+QPushButton#pushButton:pressed 
+{  
+    /* 改变背景色 */  
+    background-color:rgb(40,85,20);  
+ 
+    /* 改变边框风格 */  
+    border-style:inset;  
+ 
+    /* 使文字有一点移动 */  
+    padding-left:6px;  
+    padding-top:6px;  
+}
+ 
+/* 按钮样式 */ 
+QPushButton:flat 
+{  
+    border:2px solid red;  
+} 
+ 
+/*鼠标悬浮时的效果*/
+QPushButton:hover
+{
+    color:#0000ff;
+    background-color:rgb(210, 205, 205); /*改变背景色*/
+    border-style:inset;/*改变边框风格*/
+    padding-left:8px;
+    padding-top:8px;
+}</string>
+    </property>
+    <property name="text">
+     <string>替 换</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label3">
+    <property name="geometry">
+     <rect>
+      <x>270</x>
+      <y>4</y>
+      <width>21</width>
+      <height>24</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">    /* 前景色 */  
+    color:green;  
+   font: 17px;  </string>
+    </property>
+    <property name="text">
+     <string>将</string>
+    </property>
+   </widget>
+   <widget class="QGroupBox" name="groupBox_10">
+    <property name="geometry">
+     <rect>
+      <x>758</x>
+      <y>430</y>
+      <width>114</width>
+      <height>115</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">    /* 前景色 */  
+    color:rgb(170, 0, 255)
+</string>
+    </property>
+    <property name="title">
+     <string>Blinds</string>
+    </property>
+    <widget class="QSplitter" name="splitter_7">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>20</y>
+       <width>93</width>
+       <height>90</height>
+      </rect>
+     </property>
+     <property name="orientation">
+      <enum>Qt::Vertical</enum>
+     </property>
+     <widget class="QPushButton" name="mangzhu_databases">
+      <property name="styleSheet">
+       <string notr="true">QPushButton
+{  
+    /* 前景色 */  
+    color:green;  
+ 
+    /* 背景色 */  
+    background-color:rgb(223,223,223);  
+ 
+    /* 边框风格 */  
+    border-style:outset;  
+ 
+    /* 边框宽度 */  
+    border-width:0.5px;  
+ 
+    /* 边框颜色 */  
+    border-color:rgb(10,45,110);  
+ 
+    /* 边框倒角 */  
+    border-radius:5px;  
+ 
+    /* 字体 */  
+    font:bold 14px;  
+  
+ 
+    /* 内边距 */  
+    padding:4px;  
+} 
+ 
+/* 鼠标按下时的效果 */ 
+QPushButton#pushButton:pressed 
+{  
+    /* 改变背景色 */  
+    background-color:rgb(40,85,20);  
+ 
+    /* 改变边框风格 */  
+    border-style:inset;  
+ 
+    /* 使文字有一点移动 */  
+    padding-left:6px;  
+    padding-top:6px;  
+}
+ 
+/* 按钮样式 */ 
+QPushButton:flat 
+{  
+    border:2px solid red;  
+} 
+ 
+/*鼠标悬浮时的效果*/
+QPushButton:hover
+{
+    color:#0000ff;
+    background-color:rgb(210, 205, 205); /*改变背景色*/
+    border-style:inset;/*改变边框风格*/
+    padding-left:8px;
+    padding-top:8px;
+}</string>
+      </property>
+      <property name="text">
+       <string>盲注查库</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="mangzhu_tables">
+      <property name="styleSheet">
+       <string notr="true">QPushButton
+{  
+    /* 前景色 */  
+    color:green;  
+ 
+    /* 背景色 */  
+    background-color:rgb(223,223,223);  
+ 
+    /* 边框风格 */  
+    border-style:outset;  
+ 
+    /* 边框宽度 */  
+    border-width:0.5px;  
+ 
+    /* 边框颜色 */  
+    border-color:rgb(10,45,110);  
+ 
+    /* 边框倒角 */  
+    border-radius:5px;  
+ 
+    /* 字体 */  
+    font:bold 14px;  
+  
+ 
+    /* 内边距 */  
+    padding:4px;  
+} 
+ 
+/* 鼠标按下时的效果 */ 
+QPushButton#pushButton:pressed 
+{  
+    /* 改变背景色 */  
+    background-color:rgb(40,85,20);  
+ 
+    /* 改变边框风格 */  
+    border-style:inset;  
+ 
+    /* 使文字有一点移动 */  
+    padding-left:6px;  
+    padding-top:6px;  
+}
+ 
+/* 按钮样式 */ 
+QPushButton:flat 
+{  
+    border:2px solid red;  
+} 
+ 
+/*鼠标悬浮时的效果*/
+QPushButton:hover
+{
+    color:#0000ff;
+    background-color:rgb(210, 205, 205); /*改变背景色*/
+    border-style:inset;/*改变边框风格*/
+    padding-left:8px;
+    padding-top:8px;
+}</string>
+      </property>
+      <property name="text">
+       <string>盲注查表</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="mangzhu_lumns">
+      <property name="styleSheet">
+       <string notr="true">QPushButton
+{  
+    /* 前景色 */  
+    color:green;  
+ 
+    /* 背景色 */  
+    background-color:rgb(223,223,223);  
+ 
+    /* 边框风格 */  
+    border-style:outset;  
+ 
+    /* 边框宽度 */  
+    border-width:0.5px;  
+ 
+    /* 边框颜色 */  
+    border-color:rgb(10,45,110);  
+ 
+    /* 边框倒角 */  
+    border-radius:5px;  
+ 
+    /* 字体 */  
+    font:bold 14px;  
+  
+ 
+    /* 内边距 */  
+    padding:4px;  
+} 
+ 
+/* 鼠标按下时的效果 */ 
+QPushButton#pushButton:pressed 
+{  
+    /* 改变背景色 */  
+    background-color:rgb(40,85,20);  
+ 
+    /* 改变边框风格 */  
+    border-style:inset;  
+ 
+    /* 使文字有一点移动 */  
+    padding-left:6px;  
+    padding-top:6px;  
+}
+ 
+/* 按钮样式 */ 
+QPushButton:flat 
+{  
+    border:2px solid red;  
+} 
+ 
+/*鼠标悬浮时的效果*/
+QPushButton:hover
+{
+    color:#0000ff;
+    background-color:rgb(210, 205, 205); /*改变背景色*/
+    border-style:inset;/*改变边框风格*/
+    padding-left:8px;
+    padding-top:8px;
+}</string>
+      </property>
+      <property name="text">
+       <string>盲注查列</string>
+      </property>
+     </widget>
+    </widget>
+   </widget>
+   <zorder>groupBox</zorder>
+   <zorder>Source_text</zorder>
+   <zorder>encode_type</zorder>
+   <zorder>Result_text</zorder>
+   <zorder>source</zorder>
+   <zorder>result</zorder>
+   <zorder>splitter</zorder>
+   <zorder>groupBox_3</zorder>
+   <zorder>groupBox_9</zorder>
+   <zorder>sql_type</zorder>
+   <zorder>time</zorder>
+   <zorder>tihuan_source</zorder>
+   <zorder>tihuan_result</zorder>
+   <zorder>label2</zorder>
+   <zorder>tihuan</zorder>
+   <zorder>label3</zorder>
+   <zorder>groupBox_10</zorder>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

